@@ -1,105 +1,3 @@
-// import React, { useEffect, useState, useRef } from "react";
-// import Layout from "../components/Layout";
-// import { useNavigate } from "react-router-dom";
-
-// const Camera = () => {
-//   const [devices, setDevices] = useState([]);
-//   const [selectedDeviceId, setSelectedDeviceId] = useState("");
-//   const videoRef = useRef(null);
-//   const navigate = useNavigate();
-
-
-//   // Fetch all video input devices
-//   const loadCameras = async () => {
-//     try {
-//       const deviceInfos = await navigator.mediaDevices.enumerateDevices();
-//       const videoDevices = deviceInfos.filter(
-//         (device) => device.kind === "videoinput"
-//       );
-
-//       setDevices(videoDevices);
-
-//       // Auto-select if only one camera
-//       if (videoDevices.length === 1) {
-//         startCamera(videoDevices[0].deviceId);
-//         setSelectedDeviceId(videoDevices[0].deviceId);
-//       }
-//     } catch (error) {
-//       console.error("Error detecting cameras:", error);
-//     }
-//   };
-
-//   // Start the selected camera feed
-//   const startCamera = async (deviceId) => {
-//     try {
-//       const stream = await navigator.mediaDevices.getUserMedia({
-//         video: { deviceId: deviceId ? { exact: deviceId } : undefined },
-//       });
-
-//       if (videoRef.current) {
-//         videoRef.current.srcObject = stream;
-//       }
-//     } catch (error) {
-//       console.error("Error starting camera:", error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     loadCameras();
-//   }, []);
-
-//   const handleCameraChange = (e) => {
-//     const deviceId = e.target.value;
-//     setSelectedDeviceId(deviceId);
-//     startCamera(deviceId);
-//   };
-
-//   return (
-//     <Layout>
-//     <div className="container mt-4">
-      
-
-//       {/* Camera dropdown */}
-//       {devices.length > 1 && (
-//         <div className="mb-3">
-//           <label className="form-label">Select Camera</label>
-//           <select
-//             className="form-select"
-//             value={selectedDeviceId}
-//             onChange={handleCameraChange}
-//           >
-//             <option value="">-- Select a Camera --</option>
-//             {devices.map((device, index) => (
-//               <option key={index} value={device.deviceId}>
-//                 {device.label || `Camera ${index + 1}`}
-//               </option>
-//             ))}
-//           </select>
-//         </div>
-//       )}
-
-//       {/* Video Feed */}
-//       <div className="text-center">
-//         <video
-//           ref={videoRef}
-//           autoPlay
-//           playsInline
-//           className="border rounded shadow"
-//           width="600"
-//           height="400"
-//         ></video>
-//       </div>
-//     </div>
-//     </Layout>
-//   );
-// };
-
-// export default Camera;
-
-
-
-
-
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
@@ -157,7 +55,7 @@ const Camera = () => {
   useEffect(() => {
     loadCameras();
 
-    return () => stopCamera(); // cleanup
+    return () => stopCamera(); 
   }, []);
 
   // Handle dropdown camera switch
