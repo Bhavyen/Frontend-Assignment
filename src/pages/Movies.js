@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 
-const API_KEY = "8f5d4814"; // Replace this
+const API_KEY = "8f5d4814"; 
 
 const Movies = () => {
   const [query, setQuery] = useState("");
